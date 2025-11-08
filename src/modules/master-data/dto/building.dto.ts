@@ -1,4 +1,4 @@
-import { IsString, IsUUID, IsOptional, MaxLength } from 'class-validator';
+import { IsString, IsUUID, IsOptional, MaxLength, IsBoolean } from 'class-validator';
 import { ApiProperty, PartialType } from '@nestjs/swagger';
 
 export class CreateBuildingDto {
@@ -14,4 +14,9 @@ export class CreateBuildingDto {
   buildingName?: string;
 }
 
-export class UpdateBuildingDto extends PartialType(CreateBuildingDto) {}
+export class UpdateBuildingDto extends PartialType(CreateBuildingDto) {
+  @ApiProperty({ example: false, description: 'Soft delete flag', required: false })
+  @IsOptional()
+  @IsBoolean()
+  isDelete?: boolean;
+}
