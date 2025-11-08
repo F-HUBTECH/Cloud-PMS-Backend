@@ -6,5 +6,5 @@ export class UpdateHotelDto extends PartialType(CreateHotelDto) {
   @ApiProperty({ example: false, description: 'Soft delete flag', required: false })
   @IsOptional()
   @IsBoolean()
-  isDelete?: boolean;
+  isActive?: boolean;
 }

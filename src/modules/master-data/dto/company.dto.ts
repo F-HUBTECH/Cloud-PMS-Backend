@@ -28,5 +28,5 @@ export class UpdateCompanyDto extends PartialType(CreateCompanyDto) {
   @ApiProperty({ example: false, description: 'Soft delete flag', required: false })
   @IsOptional()
   @IsBoolean()
-  isDelete?: boolean;
+  isActive?: boolean;
 }

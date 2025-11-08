@@ -23,5 +23,5 @@ export class UpdateRoomViewDto extends PartialType(CreateRoomViewDto) {
   @ApiProperty({ example: false, description: 'Soft delete flag', required: false })
   @IsOptional()
   @IsBoolean()
-  isDelete?: boolean;
+  isActive?: boolean;
 }

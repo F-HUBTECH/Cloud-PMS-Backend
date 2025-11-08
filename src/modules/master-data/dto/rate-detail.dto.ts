@@ -28,5 +28,5 @@ export class UpdateRateDetailDto extends PartialType(CreateRateDetailDto) {
   @ApiProperty({ example: false, description: 'Soft delete flag', required: false })
   @IsOptional()
   @IsBoolean()
-  isDelete?: boolean;
+  isActive?: boolean;
 }

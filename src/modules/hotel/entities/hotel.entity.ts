@@ -1,5 +1,6 @@
 import { Entity, Column, OneToMany } from 'typeorm';
 import { BaseEntity } from '../../../common/entities/base.entity';
+import { ApiProperty } from '@nestjs/swagger';
 
 @Entity('mst_hotel')
 export class Hotel extends BaseEntity {
@@ -8,4 +9,11 @@ export class Hotel extends BaseEntity {
 
   @Column({ name: 'hotel_name', length: 255 })
   hotelName: string;
+
+  @ApiProperty({
+    description: 'สถานะการใช้งาน (true = ใช้งาน, false = ปิดการใช้งาน)',
+    example: true,
+  })
+  @Column({ name: 'is_active', type: 'boolean', default: true })
+  isActive: boolean;
 }

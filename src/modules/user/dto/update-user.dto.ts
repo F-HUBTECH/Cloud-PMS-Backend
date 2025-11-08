@@ -12,5 +12,5 @@ export class UpdateUserDto extends PartialType(CreateUserDto) {
   @ApiProperty({ example: false, description: 'Soft delete flag', required: false })
   @IsOptional()
   @IsBoolean()
-  isDelete?: boolean;
+  isActive?: boolean;
 }

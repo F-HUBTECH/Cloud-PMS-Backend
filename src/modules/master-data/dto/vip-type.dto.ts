@@ -23,5 +23,5 @@ export class UpdateVipTypeDto extends PartialType(CreateVipTypeDto) {
   @ApiProperty({ example: false, description: 'Soft delete flag', required: false })
   @IsOptional()
   @IsBoolean()
-  isDelete?: boolean;
+  isActive?: boolean;
 }

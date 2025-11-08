@@ -30,4 +30,11 @@ export class Company {
   @ApiProperty()
   @UpdateDateColumn({ name: 'updated_at' })
   updatedAt: Date;
+
+  @ApiProperty({
+    description: 'สถานะการใช้งาน (true = ใช้งาน, false = ปิดการใช้งาน)',
+    example: true,
+  })
+  @Column({ name: 'is_active', type: 'boolean', default: true })
+  isActive: boolean;
 }
