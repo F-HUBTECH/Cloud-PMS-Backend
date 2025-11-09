@@ -12,6 +12,11 @@ export class CreateBuildingDto {
   @IsString()
   @MaxLength(100)
   buildingName?: string;
+
+  @ApiProperty({ example: true, description: 'Active status', required: false, default: true })
+  @IsOptional()
+  @IsBoolean()
+  isActive?: boolean;
 }
 
 export class UpdateBuildingDto extends PartialType(CreateBuildingDto) {

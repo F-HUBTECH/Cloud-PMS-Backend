@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, HttpCode, HttpStatus } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, HttpCode, HttpStatus } from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiResponse, ApiBearerAuth } from '@nestjs/swagger';
 import { NationalityService } from '../services/nationality.service';
 import { CreateNationalityDto, UpdateNationalityDto } from '../dto/nationality.dto';
@@ -48,5 +48,15 @@ export class NationalityController {
   @ApiResponse({ status: 500, description: 'Internal server error' })
   async update(@Param('id') id: string, @Body() updateDto: UpdateNationalityDto): Promise<Nationality> {
     return this.nationalityService.update(id, updateDto);
+  }
+
+  @Delete(':id')
+  @HttpCode(HttpStatus.NO_CONTENT)
+  @ApiOperation({ summary: 'Delete nationality by ID' })
+  @ApiResponse({ status: 204, description: 'Nationality deleted successfully' })
+  @ApiResponse({ status: 404, description: 'Nationality not found' })
+  @ApiResponse({ status: 500, description: 'Internal server error' })
+  async remove(@Param('id') id: string): Promise<void> {
+    return this.nationalityService.remove(id);
   }
 }

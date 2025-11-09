@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, HttpCode, HttpStatus } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, HttpCode, HttpStatus } from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiResponse, ApiBearerAuth } from '@nestjs/swagger';
 import { RoomStatusService } from '../services/room-status.service';
 import { CreateRoomStatusDto, UpdateRoomStatusDto } from '../dto/room-status.dto';
@@ -48,5 +48,15 @@ export class RoomStatusController {
   @ApiResponse({ status: 500, description: 'Internal server error' })
   async update(@Param('id') id: string, @Body() updateDto: UpdateRoomStatusDto): Promise<RoomStatus> {
     return this.roomStatusService.update(id, updateDto);
+  }
+
+  @Delete(':id')
+  @HttpCode(HttpStatus.NO_CONTENT)
+  @ApiOperation({ summary: 'Delete room status by ID' })
+  @ApiResponse({ status: 204, description: 'Room status deleted successfully' })
+  @ApiResponse({ status: 404, description: 'Room status not found' })
+  @ApiResponse({ status: 500, description: 'Internal server error' })
+  async remove(@Param('id') id: string): Promise<void> {
+    return this.roomStatusService.remove(id);
   }
 }

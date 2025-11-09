@@ -17,6 +17,11 @@ export class CreateAbfTypeDto {
   @IsString()
   @MaxLength(100)
   abfName?: string;
+
+  @ApiProperty({ example: true, description: 'Active status', required: false, default: true })
+  @IsOptional()
+  @IsBoolean()
+  isActive?: boolean;
 }
 
 export class UpdateAbfTypeDto extends PartialType(CreateAbfTypeDto) {

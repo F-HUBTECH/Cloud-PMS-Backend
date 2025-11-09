@@ -17,6 +17,11 @@ export class CreateVipTypeDto {
   @IsString()
   @MaxLength(100)
   vipName?: string;
+
+  @ApiProperty({ example: true, description: 'Active status', required: false, default: true })
+  @IsOptional()
+  @IsBoolean()
+  isActive?: boolean;
 }
 
 export class UpdateVipTypeDto extends PartialType(CreateVipTypeDto) {

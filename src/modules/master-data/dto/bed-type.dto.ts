@@ -17,6 +17,11 @@ export class CreateBedTypeDto {
   @IsString()
   @MaxLength(100)
   bedName?: string;
+
+  @ApiProperty({ example: true, description: 'Active status', required: false, default: true })
+  @IsOptional()
+  @IsBoolean()
+  isActive?: boolean;
 }
 
 export class UpdateBedTypeDto extends PartialType(CreateBedTypeDto) {

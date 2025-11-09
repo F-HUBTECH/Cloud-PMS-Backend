@@ -17,6 +17,11 @@ export class CreateTitleDto {
   @IsString()
   @MaxLength(50)
   titleName?: string;
+
+  @ApiProperty({ example: true, description: 'Active status', required: false, default: true })
+  @IsOptional()
+  @IsBoolean()
+  isActive?: boolean;
 }
 
 export class UpdateTitleDto extends PartialType(CreateTitleDto) {

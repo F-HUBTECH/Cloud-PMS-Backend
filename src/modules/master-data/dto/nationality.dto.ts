@@ -17,6 +17,11 @@ export class CreateNationalityDto {
   @IsString()
   @MaxLength(100)
   nationName?: string;
+
+  @ApiProperty({ example: true, description: 'Active status', required: false, default: true })
+  @IsOptional()
+  @IsBoolean()
+  isActive?: boolean;
 }
 
 export class UpdateNationalityDto extends PartialType(CreateNationalityDto) {

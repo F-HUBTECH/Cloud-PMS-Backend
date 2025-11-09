@@ -7,6 +7,10 @@ export class Market {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
+  @ApiProperty({ example: '123e4567-e89b-12d3-a456-426614174000', description: 'Hotel ID' })
+  @Column({ name: 'hotel_id', type: 'uuid' })
+  hotelId: string;
+
   @ApiProperty({ example: 'CORP' })
   @Column({ name: 'market_code', length: 10, nullable: true })
   marketCode: string;

@@ -17,6 +17,11 @@ export class CreateRoomViewDto {
   @IsString()
   @MaxLength(100)
   viewName?: string;
+
+  @ApiProperty({ example: true, description: 'Active status', required: false, default: true })
+  @IsOptional()
+  @IsBoolean()
+  isActive?: boolean;
 }
 
 export class UpdateRoomViewDto extends PartialType(CreateRoomViewDto) {

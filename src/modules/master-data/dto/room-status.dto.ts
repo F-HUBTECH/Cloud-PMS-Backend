@@ -17,6 +17,11 @@ export class CreateRoomStatusDto {
   @IsString()
   @MaxLength(100)
   statusName?: string;
+
+  @ApiProperty({ example: true, description: 'Active status', required: false, default: true })
+  @IsOptional()
+  @IsBoolean()
+  isActive?: boolean;
 }
 
 export class UpdateRoomStatusDto extends PartialType(CreateRoomStatusDto) {

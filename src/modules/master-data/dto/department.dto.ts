@@ -17,6 +17,11 @@ export class CreateDepartmentDto {
   @IsString()
   @MaxLength(100)
   deptName?: string;
+
+  @ApiProperty({ example: true, description: 'Active status', required: false, default: true })
+  @IsOptional()
+  @IsBoolean()
+  isActive?: boolean;
 }
 
 export class UpdateDepartmentDto extends PartialType(CreateDepartmentDto) {

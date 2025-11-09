@@ -12,6 +12,11 @@ export class CreateFloorDto {
   @IsString()
   @MaxLength(50)
   floorName?: string;
+
+  @ApiProperty({ example: true, description: 'Active status', required: false, default: true })
+  @IsOptional()
+  @IsBoolean()
+  isActive?: boolean;
 }
 
 export class UpdateFloorDto extends PartialType(CreateFloorDto) {

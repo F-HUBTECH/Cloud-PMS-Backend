@@ -22,6 +22,11 @@ export class CreateRateDetailDto {
   @IsNumber()
   @Type(() => Number)
   price?: number;
+
+  @ApiProperty({ example: true, description: 'Active status', required: false, default: true })
+  @IsOptional()
+  @IsBoolean()
+  isActive?: boolean;
 }
 
 export class UpdateRateDetailDto extends PartialType(CreateRateDetailDto) {

@@ -18,6 +18,11 @@ export class CreateRoomTypeDto {
   @IsString()
   @MaxLength(100)
   roomTypeName?: string;
+
+  @ApiProperty({ example: true, description: 'Active status', required: false, default: true })
+  @IsOptional()
+  @IsBoolean()
+  isActive?: boolean;
 }
 
 export class UpdateRoomTypeDto extends PartialType(CreateRoomTypeDto) {

@@ -17,6 +17,11 @@ export class CreateRateMasterDto {
   @IsString()
   @MaxLength(100)
   rateName?: string;
+
+  @ApiProperty({ example: true, description: 'Active status', required: false, default: true })
+  @IsOptional()
+  @IsBoolean()
+  isActive?: boolean;
 }
 
 export class UpdateRateMasterDto extends PartialType(CreateRateMasterDto) {

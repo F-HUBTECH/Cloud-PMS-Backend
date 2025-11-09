@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, HttpCode, HttpStatus } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, HttpCode, HttpStatus } from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiResponse, ApiBearerAuth } from '@nestjs/swagger';
 import { BuildingService } from '../services/building.service';
 import { CreateBuildingDto, UpdateBuildingDto } from '../dto/building.dto';
@@ -48,5 +48,15 @@ export class BuildingController {
   @ApiResponse({ status: 500, description: 'Internal server error' })
   async update(@Param('id') id: string, @Body() updateDto: UpdateBuildingDto): Promise<Building> {
     return this.buildingService.update(id, updateDto);
+  }
+
+  @Delete(':id')
+  @HttpCode(HttpStatus.NO_CONTENT)
+  @ApiOperation({ summary: 'Delete building by ID' })
+  @ApiResponse({ status: 204, description: 'Building deleted successfully' })
+  @ApiResponse({ status: 404, description: 'Building not found' })
+  @ApiResponse({ status: 500, description: 'Internal server error' })
+  async remove(@Param('id') id: string): Promise<void> {
+    return this.buildingService.remove(id);
   }
 }

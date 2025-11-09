@@ -93,6 +93,11 @@ export class CreateTransCodeDto {
   @IsString()
   @MaxLength(10)
   payType?: string;
+
+  @ApiProperty({ example: true, description: 'Active status', required: false, default: true })
+  @IsOptional()
+  @IsBoolean()
+  isActive?: boolean;
 }
 
 export class UpdateTransCodeDto extends PartialType(CreateTransCodeDto) {

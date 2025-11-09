@@ -13,6 +13,11 @@ export class CreateChannelDto {
   @IsString()
   @MaxLength(100)
   channelName?: string;
+
+  @ApiProperty({ example: true, description: 'Active status', required: false, default: true })
+  @IsOptional()
+  @IsBoolean()
+  isActive?: boolean;
 }
 
 export class UpdateChannelDto extends PartialType(CreateChannelDto) {

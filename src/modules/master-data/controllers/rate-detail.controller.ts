@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, HttpCode, HttpStatus } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, HttpCode, HttpStatus } from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiResponse, ApiBearerAuth } from '@nestjs/swagger';
 import { RateDetailService } from '../services/rate-detail.service';
 import { CreateRateDetailDto, UpdateRateDetailDto } from '../dto/rate-detail.dto';
@@ -48,5 +48,15 @@ export class RateDetailController {
   @ApiResponse({ status: 500, description: 'Internal server error' })
   async update(@Param('id') id: string, @Body() updateDto: UpdateRateDetailDto): Promise<RateDetail> {
     return this.rateDetailService.update(id, updateDto);
+  }
+
+  @Delete(':id')
+  @HttpCode(HttpStatus.NO_CONTENT)
+  @ApiOperation({ summary: 'Delete rate detail by ID' })
+  @ApiResponse({ status: 204, description: 'Rate detail deleted successfully' })
+  @ApiResponse({ status: 404, description: 'Rate detail not found' })
+  @ApiResponse({ status: 500, description: 'Internal server error' })
+  async remove(@Param('id') id: string): Promise<void> {
+    return this.rateDetailService.remove(id);
   }
 }

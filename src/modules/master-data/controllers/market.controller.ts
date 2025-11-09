@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, HttpCode, HttpStatus } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, HttpCode, HttpStatus } from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiResponse, ApiBearerAuth } from '@nestjs/swagger';
 import { MarketService } from '../services/market.service';
 import { CreateMarketDto, UpdateMarketDto } from '../dto/market.dto';
@@ -48,5 +48,15 @@ export class MarketController {
   @ApiResponse({ status: 500, description: 'Internal server error' })
   async update(@Param('id') id: string, @Body() updateDto: UpdateMarketDto): Promise<Market> {
     return this.marketService.update(id, updateDto);
+  }
+
+  @Delete(':id')
+  @HttpCode(HttpStatus.NO_CONTENT)
+  @ApiOperation({ summary: 'Delete market by ID' })
+  @ApiResponse({ status: 204, description: 'Market deleted successfully' })
+  @ApiResponse({ status: 404, description: 'Market not found' })
+  @ApiResponse({ status: 500, description: 'Internal server error' })
+  async remove(@Param('id') id: string): Promise<void> {
+    return this.marketService.remove(id);
   }
 }

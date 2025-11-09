@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, HttpCode, HttpStatus } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, HttpCode, HttpStatus } from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiResponse, ApiBearerAuth } from '@nestjs/swagger';
 import { GuestTypeService } from '../services/guest-type.service';
 import { CreateGuestTypeDto, UpdateGuestTypeDto } from '../dto/guest-type.dto';
@@ -48,5 +48,15 @@ export class GuestTypeController {
   @ApiResponse({ status: 500, description: 'Internal server error' })
   async update(@Param('id') id: string, @Body() updateDto: UpdateGuestTypeDto): Promise<GuestType> {
     return this.guestTypeService.update(id, updateDto);
+  }
+
+  @Delete(':id')
+  @HttpCode(HttpStatus.NO_CONTENT)
+  @ApiOperation({ summary: 'Delete guest type by ID' })
+  @ApiResponse({ status: 204, description: 'Guest type deleted successfully' })
+  @ApiResponse({ status: 404, description: 'Guest type not found' })
+  @ApiResponse({ status: 500, description: 'Internal server error' })
+  async remove(@Param('id') id: string): Promise<void> {
+    return this.guestTypeService.remove(id);
   }
 }

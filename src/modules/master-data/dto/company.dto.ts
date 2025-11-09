@@ -22,6 +22,11 @@ export class CreateCompanyDto {
   @IsOptional()
   @IsUUID()
   marketId?: string;
+
+  @ApiProperty({ example: true, description: 'Active status', required: false, default: true })
+  @IsOptional()
+  @IsBoolean()
+  isActive?: boolean;
 }
 
 export class UpdateCompanyDto extends PartialType(CreateCompanyDto) {
