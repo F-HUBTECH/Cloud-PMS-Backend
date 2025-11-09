@@ -3,23 +3,31 @@ import { ValidationPipe, ClassSerializerInterceptor } from '@nestjs/common';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { ConfigService } from '@nestjs/config';
 import { Reflector } from '@nestjs/core';
+import { FastifyAdapter, NestFastifyApplication } from '@nestjs/platform-fastify';
+import fastifyCors from '@fastify/cors';
 import { AppModule } from './app.module';
 import { HttpExceptionFilter } from './common/filters/http-exception.filter';
 import { TransformInterceptor } from './common/interceptors/transform.interceptor';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create<NestFastifyApplication>(
+    AppModule,
+    new FastifyAdapter({ logger: true }),
+  );
 
   // Get ConfigService
   const configService = app.get(ConfigService);
+
+  // Register Fastify CORS plugin
+  await app.register(fastifyCors, {
+    origin: true,
+    credentials: true,
+  });
 
   // Global prefix
   const apiPrefix = configService.get<string>('API_PREFIX') || 'api';
   const apiVersion = configService.get<string>('API_VERSION') || 'v1';
   app.setGlobalPrefix(`${apiPrefix}/${apiVersion}`);
-
-  // Enable CORS
-  app.enableCors();
 
   // Global validation pipe
   app.useGlobalPipes(
@@ -62,18 +70,12 @@ async function bootstrap() {
     swaggerOptions: {
       persistAuthorization: true,
     },
-    customCssUrl: [
-      'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/5.11.0/swagger-ui.min.css',
-    ],
-    customJs: [
-      'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/5.11.0/swagger-ui-bundle.js',
-      'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/5.11.0/swagger-ui-standalone-preset.js',
-    ],
   });
 
   // Start server
   const port = configService.get<number>('PORT') || 3005;
-  await app.listen(port);
+  const host = configService.get<string>('HOST') || '0.0.0.0';
+  await app.listen(port, host);
 
   console.log(`
     🚀 Application is running on: http://localhost:${port}

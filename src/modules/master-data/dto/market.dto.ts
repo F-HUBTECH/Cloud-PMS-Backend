@@ -16,7 +16,7 @@ export class CreateMarketDto {
 }
 
 export class UpdateMarketDto extends PartialType(CreateMarketDto) {
-  @ApiProperty({ example: false, description: 'Soft delete flag', required: false })
+  @ApiProperty({ example: true, description: 'Soft delete flag', required: false })
   @IsOptional()
   @IsBoolean()
   isActive?: boolean;

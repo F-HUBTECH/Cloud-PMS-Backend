@@ -52,17 +52,17 @@ export class CreateTransCodeDto {
   @IsBoolean()
   isTaxable?: boolean;
 
-  @ApiProperty({ example: false, description: 'Is rebate' })
+  @ApiProperty({ example: true, description: 'Is rebate' })
   @IsOptional()
   @IsBoolean()
   isRebate?: boolean;
 
-  @ApiProperty({ example: false, description: 'Is city ledger' })
+  @ApiProperty({ example: true, description: 'Is city ledger' })
   @IsOptional()
   @IsBoolean()
   isCityLedger?: boolean;
 
-  @ApiProperty({ example: false, description: 'Is deposit' })
+  @ApiProperty({ example: true, description: 'Is deposit' })
   @IsOptional()
   @IsBoolean()
   isDeposit?: boolean;
@@ -72,12 +72,12 @@ export class CreateTransCodeDto {
   @IsBoolean()
   allowManualPost?: boolean;
 
-  @ApiProperty({ example: false, description: 'Require refer' })
+  @ApiProperty({ example: true, description: 'Require refer' })
   @IsOptional()
   @IsBoolean()
   requireRefer?: boolean;
 
-  @ApiProperty({ example: false, description: 'Require remark' })
+  @ApiProperty({ example: true, description: 'Require remark' })
   @IsOptional()
   @IsBoolean()
   requireRemark?: boolean;
@@ -96,7 +96,7 @@ export class CreateTransCodeDto {
 }
 
 export class UpdateTransCodeDto extends PartialType(CreateTransCodeDto) {
-  @ApiProperty({ example: false, description: 'Soft delete flag', required: false })
+  @ApiProperty({ example: true, description: 'Soft delete flag', required: false })
   @IsOptional()
   @IsBoolean()
   isActive?: boolean;
