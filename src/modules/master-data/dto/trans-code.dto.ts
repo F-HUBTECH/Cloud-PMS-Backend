@@ -8,91 +8,28 @@ export class CreateTransCodeDto {
   hotelId: string;
 
   @ApiProperty({ example: 'ROOM', description: 'Transaction code' })
+  @IsOptional()
   @IsString()
   @MaxLength(10)
-  transCode: string;
+  tranCode?: string;
 
-  @ApiProperty({ example: 'Room Charge', description: 'Transaction name' })
+  @ApiProperty({ example: 'Room Charge', description: 'Transaction description' })
+  @IsOptional()
   @IsString()
   @MaxLength(255)
-  transName: string;
+  description?: string;
 
-  @ApiProperty({ example: 7.00, description: 'VAT percentage' })
+  @ApiProperty({ example: 7.00, description: 'VAT percentage', required: false, default: 0 })
   @IsOptional()
   @IsNumber()
   @Type(() => Number)
   vatPercent?: number;
 
-  @ApiProperty({ example: 10.00, description: 'Service percentage' })
+  @ApiProperty({ example: 10.00, description: 'Service percentage', required: false, default: 0 })
   @IsOptional()
   @IsNumber()
   @Type(() => Number)
   servicePercent?: number;
-
-  @ApiProperty({ example: 'T', description: 'Transaction type' })
-  @IsOptional()
-  @IsString()
-  @MaxLength(1)
-  tranType?: string;
-
-  @ApiProperty({ example: 'GRP01', description: 'Group ID' })
-  @IsOptional()
-  @IsString()
-  @MaxLength(10)
-  groupId?: string;
-
-  @ApiProperty({ example: 'VAT1', description: 'VAT type' })
-  @IsOptional()
-  @IsString()
-  @MaxLength(5)
-  vatType?: string;
-
-  @ApiProperty({ example: true, description: 'Is taxable' })
-  @IsOptional()
-  @IsBoolean()
-  isTaxable?: boolean;
-
-  @ApiProperty({ example: true, description: 'Is rebate' })
-  @IsOptional()
-  @IsBoolean()
-  isRebate?: boolean;
-
-  @ApiProperty({ example: true, description: 'Is city ledger' })
-  @IsOptional()
-  @IsBoolean()
-  isCityLedger?: boolean;
-
-  @ApiProperty({ example: true, description: 'Is deposit' })
-  @IsOptional()
-  @IsBoolean()
-  isDeposit?: boolean;
-
-  @ApiProperty({ example: true, description: 'Allow manual post' })
-  @IsOptional()
-  @IsBoolean()
-  allowManualPost?: boolean;
-
-  @ApiProperty({ example: true, description: 'Require refer' })
-  @IsOptional()
-  @IsBoolean()
-  requireRefer?: boolean;
-
-  @ApiProperty({ example: true, description: 'Require remark' })
-  @IsOptional()
-  @IsBoolean()
-  requireRemark?: boolean;
-
-  @ApiProperty({ example: 'AR001', description: 'AR transfer code' })
-  @IsOptional()
-  @IsString()
-  @MaxLength(10)
-  arTransferCode?: string;
-
-  @ApiProperty({ example: 'CASH', description: 'Payment type' })
-  @IsOptional()
-  @IsString()
-  @MaxLength(10)
-  payType?: string;
 
   @ApiProperty({ example: true, description: 'Active status', required: false, default: true })
   @IsOptional()

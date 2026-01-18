@@ -12,68 +12,20 @@ export class TransCode {
   hotelId: string;
 
   @ApiProperty({ example: 'ROOM' })
-  @Column({ name: 'trans_code', length: 10 })
-  transCode: string;
+  @Column({ name: 'tran_code', length: 10, nullable: true })
+  tranCode: string;
 
   @ApiProperty({ example: 'Room Charge' })
-  @Column({ name: 'trans_name', length: 255 })
-  transName: string;
+  @Column({ name: 'description', length: 255, nullable: true })
+  description: string;
 
   @ApiProperty({ example: 7.00 })
-  @Column({ name: 'vat_percent', type: 'decimal', precision: 5, scale: 2, default: 0.00, nullable: true })
+  @Column({ name: 'vat_percent', type: 'decimal', precision: 5, scale: 2, default: 0 })
   vatPercent: number;
 
   @ApiProperty({ example: 10.00 })
-  @Column({ name: 'service_percent', type: 'decimal', precision: 5, scale: 2, default: 0.00, nullable: true })
+  @Column({ name: 'service_percent', type: 'decimal', precision: 5, scale: 2, default: 0 })
   servicePercent: number;
-
-  @ApiProperty({ example: 'T' })
-  @Column({ name: 'tran_type', type: 'char', length: 1, default: 'T', nullable: true })
-  tranType: string;
-
-  @ApiProperty({ example: 'GRP01' })
-  @Column({ name: 'group_id', length: 10, nullable: true })
-  groupId: string;
-
-  @ApiProperty({ example: 'VAT1' })
-  @Column({ name: 'vat_type', length: 5, nullable: true })
-  vatType: string;
-
-  @ApiProperty({ example: true })
-  @Column({ name: 'is_taxable', type: 'boolean', default: true, nullable: true })
-  isTaxable: boolean;
-
-  @ApiProperty({ example: false })
-  @Column({ name: 'is_rebate', type: 'boolean', default: false, nullable: true })
-  isRebate: boolean;
-
-  @ApiProperty({ example: false })
-  @Column({ name: 'is_city_ledger', type: 'boolean', default: false, nullable: true })
-  isCityLedger: boolean;
-
-  @ApiProperty({ example: false })
-  @Column({ name: 'is_deposit', type: 'boolean', default: false, nullable: true })
-  isDeposit: boolean;
-
-  @ApiProperty({ example: true })
-  @Column({ name: 'allow_manual_post', type: 'boolean', default: true, nullable: true })
-  allowManualPost: boolean;
-
-  @ApiProperty({ example: false })
-  @Column({ name: 'require_refer', type: 'boolean', default: false, nullable: true })
-  requireRefer: boolean;
-
-  @ApiProperty({ example: false })
-  @Column({ name: 'require_remark', type: 'boolean', default: false, nullable: true })
-  requireRemark: boolean;
-
-  @ApiProperty({ example: 'AR001' })
-  @Column({ name: 'ar_transfer_code', length: 10, nullable: true })
-  arTransferCode: string;
-
-  @ApiProperty({ example: 'CASH' })
-  @Column({ name: 'pay_type', length: 10, nullable: true })
-  payType: string;
 
   @ApiProperty()
   @CreateDateColumn({ name: 'created_at' })
