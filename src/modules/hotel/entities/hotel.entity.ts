@@ -2,7 +2,7 @@ import { Entity, Column, OneToMany } from 'typeorm';
 import { BaseEntity } from '../../../common/entities/base.entity';
 import { ApiProperty } from '@nestjs/swagger';
 
-@Entity('mst_hotel')
+@Entity('mst_hotel', { schema: 'mdm' })
 export class Hotel extends BaseEntity {
   @Column({ name: 'hotel_code', unique: true, length: 10, nullable: true })
   hotelCode: string;

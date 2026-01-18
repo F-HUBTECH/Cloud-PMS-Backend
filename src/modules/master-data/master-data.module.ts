@@ -21,6 +21,10 @@ import { RoomType } from './entities/room-type.entity';
 import { RateMaster } from './entities/rate-master.entity';
 import { RateDetail } from './entities/rate-detail.entity';
 import { TransCode } from './entities/trans-code.entity';
+import { VisaType } from './entities/visa-type.entity';
+import { Source } from './entities/source.entity';
+import { SettleType } from './entities/settle-type.entity';
+import { ServiceItem } from './entities/service-item.entity';
 
 // Services
 import { BedTypeService } from './services/bed-type.service';
@@ -42,6 +46,10 @@ import { RoomTypeService } from './services/room-type.service';
 import { RateMasterService } from './services/rate-master.service';
 import { RateDetailService } from './services/rate-detail.service';
 import { TransCodeService } from './services/trans-code.service';
+import { VisaTypeService } from './services/visa-type.service';
+import { SourceService } from './services/source.service';
+import { SettleTypeService } from './services/settle-type.service';
+import { ServiceItemService } from './services/service-item.service';
 
 // Controllers
 import { BedTypeController } from './controllers/bed-type.controller';
@@ -63,6 +71,10 @@ import { RoomTypeController } from './controllers/room-type.controller';
 import { RateMasterController } from './controllers/rate-master.controller';
 import { RateDetailController } from './controllers/rate-detail.controller';
 import { TransCodeController } from './controllers/trans-code.controller';
+import { VisaTypeController } from './controllers/visa-type.controller';
+import { SourceController } from './controllers/source.controller';
+import { SettleTypeController } from './controllers/settle-type.controller';
+import { ServiceItemController } from './controllers/service-item.controller';
 
 @Module({
   imports: [
@@ -86,6 +98,10 @@ import { TransCodeController } from './controllers/trans-code.controller';
       RateMaster,
       RateDetail,
       TransCode,
+      VisaType,
+      Source,
+      SettleType,
+      ServiceItem,
     ]),
   ],
   controllers: [
@@ -108,6 +124,10 @@ import { TransCodeController } from './controllers/trans-code.controller';
     RateMasterController,
     RateDetailController,
     TransCodeController,
+    VisaTypeController,
+    SourceController,
+    SettleTypeController,
+    ServiceItemController,
   ],
   providers: [
     BedTypeService,
@@ -129,6 +149,10 @@ import { TransCodeController } from './controllers/trans-code.controller';
     RateMasterService,
     RateDetailService,
     TransCodeService,
+    VisaTypeService,
+    SourceService,
+    SettleTypeService,
+    ServiceItemService,
   ],
   exports: [
     BedTypeService,
@@ -150,6 +174,10 @@ import { TransCodeController } from './controllers/trans-code.controller';
     RateMasterService,
     RateDetailService,
     TransCodeService,
+    VisaTypeService,
+    SourceService,
+    SettleTypeService,
+    ServiceItemService,
   ],
 })
-export class MasterDataModule {}
+export class MasterDataModule { }
